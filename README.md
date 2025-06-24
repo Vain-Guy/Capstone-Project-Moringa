@@ -1,2 +1,2 @@
 # Capstone-Project-Moringa
-Finaly Data Analysis Project for Moringa
+Final Data Analysis Project for Moringa
