@@ -94,12 +94,11 @@ The company lacks knowledge about the safety performance of different aircraft m
 
 ## Project Structure
 
-```
 ├── notebook.ipynb            # Main analysis notebook
 ├── Data/
-│   └── AviationData.csv      # Raw dataset
+│   └── AviationData.csv+      # Raw dataset
 └── README.md                 # Project documentation
 
 ## Author
 Norman Mwapea Kodi
-*Data Analyst | Ahnjin Analytics
+Data Scientist | Ahnjin Analytics
