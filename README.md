@@ -69,7 +69,7 @@ This analysis offers three primary business recommendations:
 
 The project delivers:
 - A fully annotated Jupyter Notebook for technical review  
-- A Tableau dashboard for executive exploration *(link to be added)*  
+- A Tableau dashboard for executive exploration- Link: https://public.tableau.com/views/AviationAccidentsRiskAnalysis/Dashboard1?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link  
 - A concise report suitable for strategic decision-making  
 
 **Author**: Norman Mwapea 
