@@ -1,104 +1,79 @@
-# Aircraft Risk Assessment Analysis
+# Aircraft Risk Profiling for Aviation Investment
 
-## Project Overview
+## Overview
 
-This project aims to support strategic procurement in the aviation industry by identifying **low-risk aircraft models** using historical accident data. The analysis is driven by the business need to reduce exposure to safety risks while investing in new aircraft for commercial and private operations.
+This project supports a strategic aviation initiative by providing data-driven insights into aircraft safety. By analyzing over 60 years of historical accident data from the National Transportation Safety Board (NTSB), I identify low-risk aircraft models suited for commercial and private deployment.
+
+The aim is to reduce investment risk and operational hazards by recommending aircraft with superior safety performance.
 
 ## Business Understanding
 
-### Problem Statement
+A company is entering the aviation sector and must select aircraft models for its fleet. However, without knowledge of historical accident patterns and aircraft safety records, the organization risks acquiring models associated with frequent or severe accidents.
 
-The company lacks knowledge about the safety performance of different aircraft models. Without this, it may invest in aircraft with poor safety records, risking:
+### Business Problem
+There is no existing framework within the organization to assess aircraft risk. A poor investment decision could result in:
 
-* Financial loss,
-* Reputational damage,
-* Regulatory hurdles.
+- Financial loss  
+- Regulatory complications  
+- Reputational damage  
 
-### Objectives
+### Objective
+To provide three actionable, data-backed recommendations on the safest aircraft models using historical accident data.
 
-* Identify aircraft makes and models with the **lowest incident frequency** and **injury severity**.
-* Evaluate patterns based on **manufacturer**, **flight purpose**, **engine type**, and **weather conditions**.
-* Generate **three actionable recommendations** for procurement.
+### Goals
+- Identify aircraft with low fatality and damage rates
+- Compare risk across manufacturers and flight contexts
+- Guide procurement through evidence-based analysis
 
-### Success Criteria
+## Data Understanding and Analysis
 
-* Delivery of **3 business-oriented recommendations**.
-* An interactive dashboard to explore risk profiles.
-* A well-documented Jupyter Notebook for stakeholders.
+### Data Source
+- **Provider**: National Transportation Safety Board (NTSB)
+- **Format**: CSV
+- **Size**: 88,889 records, 31 columns
+- **Time Span**: 1962–2023
 
-## Dataset Description
+### Key Variables
+| Column | Description |
+|--------|-------------|
+| `make`, `model` | Manufacturer and model |
+| `aircraft_damage` | Degree of damage incurred |
+| `injury_severity`, `total_fatal_injuries`, `total_uninjured` | Impact on passengers and crew |
+| `purpose_of_flight` | Reason for the flight (e.g., Personal, Business) |
+| `broad_phase_of_flight` | Phase during which the incident occurred |
+| `weather_condition` | Meteorological conditions at time of event |
+| `engine_type`, `number_of_engines` | Aircraft specifications |
+| `amateur_built` | Whether aircraft was home-built |
 
-* **Source**: U.S. National Transportation Safety Board (NTSB)
-* **Time Range**: 1962–2023
-* **Records**: 88,889 rows × 31 columns
-* **Format**: CSV
+### Data Quality Summary
+- **Missing Values**: Found across several columns, handled through context-aware cleaning
+- **Inconsistent Categorical Values**: Standardized for clarity and grouping
+- **Outliers**: Identified and reviewed for fields like fatalities, number of engines and date entries
 
-### Key Features
+### Analytical Approach
+1. **Data Cleaning**: Null handling, deduplication, normalization
+2. **Exploratory Data Analysis (EDA)**:
+   - Accidents by model and make
+   - Fatality rates by flight phase and weather
+   - Uninjured survival trends by flight purpose
+3. **Risk Metrics Construction**: Combining severity and frequency
+4. **Ranking and Recommendations**: Aircraft models evaluated for procurement suitability
 
-| Column Name             | Description                                       |
-| ----------------------- | ------------------------------------------------- |
-| `make`                  | Aircraft manufacturer                             |
-| `model`                 | Aircraft model                                    |
-| `make_model`            | Combined identifier of make and model             |
-| `injury_severity`       | Level of injury/fatalities                        |
-| `aircraft_damage`       | Severity of damage (e.g., Substantial, Destroyed) |
-| `weather_condition`     | Visual vs Instrument meteorological conditions    |
-| `purpose_of_flight`     | Business, Commercial, Instructional, etc.         |
-| `broad_phase_of_flight` | Flight stage when accident occurred               |
-| `engine_type`           | Type of engine (e.g., Reciprocating, Turbo Fan)   |
-| `country`               | Location of incident                              |
+## Conclusion
 
-## Data Preparation
+This analysis offers three primary business recommendations:
 
-### Cleaning Steps
+1. **Prioritize aircraft models with minimal fatality and damage records** over long operational histories.
+2. **Avoid aircraft associated with recurring high-severity incidents**, especially during critical flight phases like landing and takeoff.
+3. **Favor aircraft used successfully in business and commercial contexts**, with high rates of uninjured outcomes.
 
-* Standardized key categorical fields (`make`, `model`) using `.str.strip()` and case formatting.
-* Created `make_model` for precise risk grouping.
-* Addressed missing values via custom imputation or placeholders.
-* Removed duplicate and irrelevant rows.
+The project delivers:
+- A fully annotated Jupyter Notebook for technical review  
+- A Tableau dashboard for executive exploration *(link to be added)*  
+- A concise report suitable for strategic decision-making  
 
-### Feature Engineering
+**Author**: Norman Mwapea 
 
-* Engineered composite variables like `make_model`.
-* Derived columns for visualization and risk ranking.
+E-mail: normanmwaps@gmail.com  
+Tools Used: Python, Pandas, Matplotlib, Seaborn, Plotly, Tableau, Jupyter Notebook
 
-## Analysis Process
-
-### 1. **Initial Data Exploration**
-
-* Shape, null values, and datatype checks.
-* Basic descriptive statistics.
-
-### 2. **Univariate Analysis**
-
-* Distribution of injuries, damage, and model frequencies.
-
-### 3. **Bivariate & Multivariate Analysis**
-
-* Cross-tabulations and visualizations:
-
-  * `make_model × injury_severity`
-  * `engine_type × aircraft_damage`
-  * `purpose_of_flight × weather_condition`
-
-### 4. **Risk Ranking**
-
-* Aggregated aircraft models by severity and frequency of incidents.
-* Ranked safest aircraft based on combined risk score logic.
-
-## Visualizations & Insights
-
-* Bar plots, pie charts, heatmaps (Seaborn & Matplotlib)
-* Interactive timelines and line plots (Plotly)
-* Custom dashboards for stakeholder exploration (optional extension)
-
-## Project Structure
-
-├── notebook.ipynb            # Main analysis notebook
-├── Data/
-│   └── AviationData.csv+      # Raw dataset
-└── README.md                 # Project documentation
-
-## Author
-Norman Mwapea Kodi
-Data Scientist | Ahnjin Analytics
